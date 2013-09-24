@@ -1,0 +1,31 @@
+<%= javascript_include_tag "/plugin_assets/gateone/javascripts/gateone.js" %>
+
+<div id="gateone_container" style="position: relative; margin-top:4px;">
+  <div id="gateone"></div>
+</div>
+
+<script type="text/javascript">
+  var GateOneUrl = '<%= Setting["plugin_gateone"][:url] %>';
+  var SSHurlString = 'ssh://<%= User.current.login %>@<%= Setting["plugin_gateone"][:ssh_server] %>';
+  var d = new Date();
+  var authobj = <%= raw @valid_json_auth_object.to_json %>;
+
+  var resizeContainer = function (){
+    $("#gateone_container").height($(window).height()-220);
+    $("#gateone_container").width($(window).width()-40);
+  }
+
+  $(window).load(function(){
+    resizeContainer();
+    GateOne.init({ 
+      url: GateOneUrl, 
+      auth: authobj, 
+      autoConnectURL: SSHurlString,
+      theme: 'white',
+      scrollback: 500
+    });
+  });
+
+  $(window).resize(resizeContainer);
+
+</script>

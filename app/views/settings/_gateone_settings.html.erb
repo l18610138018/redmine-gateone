@@ -1,0 +1,22 @@
+<fieldset>
+<p>
+  <label>GateOne Server URL</label>
+  <%= text_field_tag 'settings[url]', @settings['url'] %>
+  <br />
+</p>
+<p>
+  <label>SSH Server</label>
+  <%= text_field_tag 'settings[ssh_server]', @settings['ssh_server'] %>
+  <br />
+</p>
+<p>
+  <label>API Key</label>
+  <%= text_field_tag 'settings[api_key]', @settings['api_key'] %>
+  <br />
+</p>
+<p>
+  <label>API Secret</label>
+  <%= text_field_tag 'settings[api_secret]', @settings['api_secret'] %>
+  <br />
+</p>
+</fieldset>
